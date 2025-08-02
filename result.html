@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Game Result</title>
+  <style>
+    body {
+            margin: 0;
+            padding: 0;
+            background: url('index_background.jpg') no-repeat center center;
+            background-size: cover;
+            color: white;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            text-align: center;
+            background-color:rgba(47, 4, 74, 0.7);
+            height:50% ;
+            width:50%;
+            border-radius: 15px;
+        }
+
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-size: 1.3em;
+      margin: 15px 0;
+    }
+  button {
+            background:rgba(255, 255, 255,0.7);
+            color: rgb(218, 43, 224);
+            border-radius: 10px;
+            padding: 15px 25px;
+            margin: 0 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            
+        }
+
+        button:hover {
+            background: #ddd;
+        }
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Game Over</h1>
+    <p id="level"></p>
+    <p id="score"></p>
+    <p id="highscore"></p>
+    <button onclick="playAgain()">Play Again</button>
+  </div>
+
+  <script>
+    // Read level and score from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const level = urlParams.get('level');
+    const score = urlParams.get('score');
+
+    document.getElementById("level").textContent = "Level: " + level;
+    document.getElementById("score").textContent = "Score: " + score;
+
+    // Store/retrieve high score from localStorage
+    const highKey = `highscore-${level}`;
+    const highScore = Math.max(parseInt(score), parseInt(localStorage.getItem(highKey)) || 0);
+    localStorage.setItem(highKey, highScore);
+    document.getElementById("highscore").textContent = "High Score: " + highScore;
+
+    function playAgain() {
+      // Redirect back to index.html to select level again
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

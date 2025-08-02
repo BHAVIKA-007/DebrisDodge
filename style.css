@@ -1,0 +1,44 @@
+body {
+  overflow: hidden;
+}
+
+#game{
+  background: url('game_background.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+.debris{
+    background: url('debris.webp') no-repeat center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height:80px;
+    width: 80px;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    position: relative;
+    top:20px;
+}
+
+#spaceship{
+    background: url('ufo.png') no-repeat center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height:100px;
+    width:100px;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translateX(-50%);/* done so tht divs center comes to center instead of divs left edge being at center */
+      
+}
